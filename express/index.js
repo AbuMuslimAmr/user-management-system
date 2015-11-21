@@ -1,16 +1,24 @@
 var express = require('express'),
   app = express(),
-  conf = require('./express-config');
+  bodyParser = require('body-parser'),
+  config = require('./express-config');
 
-// index
-app.use(express.static(conf.root + '/' + conf.serveFolder));
+// support json encoded bodies
+app.use(bodyParser.json()); 
+
+// serve static files
+app.use(express.static(config.root + '/' + config.serveFolder));
 app.get('/', function(req, res) {
-  res.sendFile(conf.index, {
-    root: conf.root
+  res.sendFile(config.index, {
+    root: config.root
   });
 });
 
-var server = app.listen(conf.port, function () {
+// set routes
+require('./routes')(app);
+
+// run server
+var server = app.listen(config.port, function () {
   var host = server.address().address,
       port = server.address().port;
 
