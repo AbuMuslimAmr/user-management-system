@@ -30,14 +30,11 @@ cd user-management-system
 sudo npm install
 bower install
 ```
-
-## Build
+then,
 ```
 grunt
 ```
-
-## Run express server:
-open new terminal tab:<br>
+then (in a new terminal tab), 
 ```
 node express
 ```
