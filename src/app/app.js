@@ -5,6 +5,9 @@
     .module('ngApp', [
       'ui.router',
       'ui.bootstrap',
+      'ui.grid',
+      'ui.grid.pinning',
+      'ngTouch',
       'restangular'
     ]);
 })();

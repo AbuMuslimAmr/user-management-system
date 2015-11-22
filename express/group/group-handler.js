@@ -23,7 +23,7 @@ function create(req, res) {
 function get(req, res) {
   var groupID = parseInt(req.params.id, 10);
 
-  if (_.isUndefined(groupID) === true) {
+  if (_.isNaN(groupID) === true) {
     res.send(groups.get());
   } else {
     var group = groups.find(groupID);

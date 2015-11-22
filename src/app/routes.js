@@ -8,9 +8,17 @@
       $urlRouterProvider.when('/', DEFAULT_STATE);
       
       $stateProvider
-        .state('landing', {
-          url: '/landing',
-          templateUrl: 'app/states/landing/landing.html'
+        .state('groups', {
+          url: '/groups',
+          templateUrl: 'app/states/groups/groups.html',
+          controller: 'GroupsCtrl',
+          controllerAs: 'groupsCtrl'
+        })
+        .state('group-details', {
+          url: '/groups/:id',
+          templateUrl: 'app/states/group/group.html',
+          controller: 'GroupCtrl',
+          controllerAs: 'groupCtrl'
         });
     });
 })();

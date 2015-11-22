@@ -3,5 +3,5 @@
 
   angular
     .module('ngApp')
-    .constant('DEFAULT_STATE', '/landing');
+    .constant('DEFAULT_STATE', '/groups');
 })();

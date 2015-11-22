@@ -1,0 +1,11 @@
+<script type="text/ng-template" id="groups-grid-cell-template">
+  <div class="ui-grid-cell-contents">
+    <a ui-sref="group-details({id: row.entity.id})">
+      details
+    </a>
+  </div>
+</script>
+
+<div>
+  <div ui-grid="groupsCtrl.gridConfig"></div>
+</div>
