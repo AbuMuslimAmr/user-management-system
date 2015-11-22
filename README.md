@@ -41,6 +41,6 @@ open new terminal tab:<br>
 node express
 ```
 <br>
-You can configure port from 'express/express-config.js'
+You can configure port from 'express/config.js'
 
 App then should be up and running on port 3000 (by default).

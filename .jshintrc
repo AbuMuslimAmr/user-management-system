@@ -7,6 +7,7 @@
   "browser": true,
   "globals": {
     "jQuery": true,
-    "angular": true
+    "angular": true,
+    "_": true
   }
 }
