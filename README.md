@@ -2,7 +2,8 @@
 
 ## Stack
 - Bootstrap
-- Express
+- Node
+  - Express
 - Angular
   - restangular
   - ui.bootstrap
@@ -41,6 +42,25 @@ open new terminal tab:<br>
 node express
 ```
 <br>
-You can configure port from 'express/config.js'
-
+You can configure port from 'express/config.js' <br>
 App then should be up and running on port 3000 (by default).
+
+## APIs
+- 'Group' resource
+  - POST /group
+  - GET /group/:id?
+  - DELETE /group/:id
+  - PUT /group/:id
+  - POST /group/:group_id/user/:user_id
+  - DELETE /group/:group_id/user/:user_id
+- 'User' resource
+  - POST /user
+  - GET /user/:id?
+  - DELETE /user/:id
+  - PUT /user/:id
+
+## Frontend routes
+- /groups
+- /groups/:id
+- /users
+- /users/:id
