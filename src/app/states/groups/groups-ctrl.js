@@ -18,13 +18,16 @@
         columnDefs: [{
           field: 'id',
           width: 100,
-          enableHiding: false
+          enableHiding: false,
+          enableColumnMenu: false
         }, {
           field: 'name',
-          enableHiding: false
+          enableHiding: false,
+          enableColumnMenu: false
         }, {
           displayName: 'Users count',
-          name: 'users.length'
+          name: 'users.length',
+          enableColumnMenu: false
         }, {
           displayName: '',
           field: 'Actions',

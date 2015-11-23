@@ -14,7 +14,7 @@ module.exports = function(grunt, config) {
     styles: {
       files: config.styles.src,
       tasks: [
-        'lesslint',
+        //'lesslint',
         'less'
       ],
       options: {

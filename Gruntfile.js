@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     'clean',
     'jshint:all',
     'copy',
-    'lesslint',
+    //'lesslint',
     'less',
     'concat',
     'babel',
