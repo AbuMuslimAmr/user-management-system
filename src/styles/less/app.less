@@ -8,25 +8,48 @@ body {
 
 .main-nav {
     padding: 15px;
-    font-size: 30px;
-    height: 70px;
+    height: 55px;
     background-color: @page-title-background;
 
-    a.tab {
+    .tab {
+        font-weight: 100;
+        font-size: 18px;
         text-decoration: none;
-        color: @title-font-color;
-        .clickable;
-    }
-
-    .tab.active {
-        border-bottom: 2px solid orange;
         padding-bottom: 4px;
-        color: white;
-        font-weight: 400;
-    }
-
-    .separator::after {
-        content: "|";
         color: @title-font-color;
+        margin-right: 10px;
+        border-bottom: 1px solid @title-font-color;
+
+        .clickable;
+
+        &:hover {
+            color: #fff;
+            border-bottom: 3px solid @title-font-color;
+        }
+
+        &.active {
+            border-bottom: 1px solid orange;
+            color: white;
+            font-weight: 400;
+
+            &:hover {
+                border-bottom: 1px solid orange;
+            }
+        }
     }
+}
+
+.view-wrapper {
+    position: relative;
+
+    .add-btn {
+        position: absolute;
+        top: -45px;
+        right: 10px;
+    }
+}
+
+.panel.details {
+    padding: 20px;
+    background-color: #FFF8E2;
 }

@@ -23,7 +23,7 @@ function create(req, res) {
 function get(req, res) {
   var userID = parseInt(req.params.id, 10);
 
-  if (_.isUndefined(userID) === true) {
+  if (_.isNaN(userID) === true) {
     res.send(users.get());
   } else {
     var user = users.find(userID);

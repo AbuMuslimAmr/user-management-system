@@ -1,23 +1,28 @@
 (function() {
   'use strict';
 
-  class GroupsCtrl {
-    constructor(api, $templateCache) {
-      this._api = api;
+  class UsersCtrl {
+    constructor($scope, $templateCache, api) {
+      this._$scope = $scope;
       this._$templateCache = $templateCache;
+      this._api = api;
       
       this.init();
       this.load();
     }
 
     init() {
+      this._$scope.removeGroup = (group) => {
+        console.log(group);
+      };
+
       // grid configurations
       this.gridConfig = {
         enableSorting: true,
         enableFiltering: true,
         columnDefs: [{
           field: 'id',
-          width: 100,
+          width: 70,
           enableHiding: false,
           enableColumnMenu: false
         }, {
@@ -25,13 +30,13 @@
           enableHiding: false,
           enableColumnMenu: false
         }, {
-          displayName: 'Users count',
-          name: 'users.length',
+          field: 'email',
+          enableHiding: false,
           enableColumnMenu: false
         }, {
           displayName: '',
-          field: 'Actions',
-          cellTemplate: this._$templateCache.get('groups-grid-cell-template'),
+          field: 'actions',
+          cellTemplate: this._$templateCache.get('users-grid-details-cell'),
           enableFiltering: false,
           enableColumnMenu: false
         }]
@@ -39,15 +44,15 @@
     }
 
     load() {
-      this._api.Group
+      this._api.User
         .get()
-        .then((groups) => {
-          this.gridConfig.data = groups;
+        .then((users) => {
+          this.gridConfig.data = users;
         });
     }
   }
 
   angular
     .module('ngApp')
-    .controller('GroupsCtrl', GroupsCtrl);
+    .controller('UsersCtrl', UsersCtrl);
 })();

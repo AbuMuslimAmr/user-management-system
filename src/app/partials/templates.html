@@ -1,0 +1,21 @@
+<script type="text/ng-template" id="groups-grid-details-cell">
+  <div class="ui-grid-cell-contents text-center">
+    <a class="btn btn-xs btn-info" ui-sref="group-details({id: row.entity.id})">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <div 
+      class="btn btn-xs btn-danger"
+      ng-disabled="row.entity.users.length > 0"
+      ng-click="grid.appScope.removeGroup(row.entity)">
+      <i class="fa fa-trash"></i>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="users-grid-details-cell">
+  <div class="ui-grid-cell-contents text-center">
+    <a ui-sref="user-details({id: row.entity.id})">
+      details
+    </a>
+  </div>
+</script>

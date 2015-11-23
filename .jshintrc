@@ -8,6 +8,7 @@
   "globals": {
     "jQuery": true,
     "angular": true,
-    "_": true
+    "_": true,
+    "console": true
   }
 }
