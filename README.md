@@ -40,6 +40,8 @@ node express
 ```
 <br>
 You can configure port from 'express/config.js' <br>
+You can also provide seed inputs in the config.js of users and groups. Initially users=10 and groups=10<br>
+(NOTE: when selecting to seed users, they can initially be created without being assigned to groups) <br>
 App then should be up and running on port 3000 (by default).
 
 ## APIs

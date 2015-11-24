@@ -2,14 +2,16 @@ var _ = require('lodash'),
     User = require('../user/user'),
     EntityCollection = require('../helpers/entity-collection'),
     users = new EntityCollection(),
-    UserGroupTable = require('../helpers/user-group-table').get();
+    UserGroupTable = require('../helpers/user-group-table').get(),
+    utils = require('../helpers/utils');
 
 //************************************************//
 //  POST User handler
 //************************************************//
 function create(req, res) {
   var user = new User({
-        name: req.body.name
+        name: req.body.name,
+        email: req.body.email
       });
 
   users.push(user);
@@ -38,6 +40,9 @@ function remove(req, res) {
   var userID = parseInt(req.params.id, 10),
       user = users.remove(userID);
 
+  // removes all relations with this user
+  UserGroupTable.removeUser(userID);
+
   res.send(user.get());
 }
 
@@ -60,14 +65,21 @@ function update(req, res) {
 //************************************************//
 //  Seed sample data
 //************************************************//
-(function seed() {
-  _.times(20, function(i) {
-    var user = new User({
-      name: 'user ' + i,
-      email: 'user' + 1 + '@domain.com' 
-    });
+var config = require('../config');
 
-    users.push(user); 
+(function seed() {
+  if (config.seed.users > 0) {
+    console.log('Seeding ' + config.seed.users + ' users...');
+  }
+  
+  _.times(config.seed.users, function(i) {
+    var name = utils.randomStr(),
+      user = new User({
+        name: 'US-' + name,
+        email: name + '@domain.com' 
+      });
+
+    users.push(user);
   });
 })();
 

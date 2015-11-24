@@ -5,8 +5,9 @@
     {{config.message}}
 </div>
 <div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
     <button ng-repeat="action in config.actions" 
-            class="btn btn-primary" type="button" ng-click="doAction(action)">OK
+            class="btn btn-primary" type="button" ng-click="doAction(action)">
+      {{action.title}}
     </button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>

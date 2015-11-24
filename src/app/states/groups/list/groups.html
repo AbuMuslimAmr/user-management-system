@@ -2,5 +2,13 @@
   <div class="btn btn-success btn-md add-btn" ui-sref="group-details">
     <i class="fa fa-plus"></i> Group
   </div>
-  <div ui-grid="groupsCtrl.gridConfig"></div>
+  <div
+    ng-show="!loading && groupsCtrl.gridConfig.data.length"
+    ui-grid="groupsCtrl.gridConfig">
+  </div>
+  <div
+    ng-show="!loading && !groupsCtrl.gridConfig.data.length"
+    class="no-data">
+    No groups added yet.
+  </div>
 </div>

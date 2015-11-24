@@ -2,24 +2,26 @@
   'use strict';
 
   class GroupsCtrl {
-    constructor($scope, $templateCache, api, modal) {
+    constructor($scope, $templateCache, api, modal, Notification) {
       this._$scope = $scope;
       this._$templateCache = $templateCache;
       this._api = api;
       this._modal = modal;
+      this._Notification = Notification;
 
       this.init();
       this.load();
     }
 
     init() {
+      // this is on the $scope because of ui grid appScope issue
       this._$scope.removeGroup = (group) => {
         let confirmationModal = this._modal
           .open({
-            title: 'Remove Group',
+            title: 'Delete Group',
             message: 'Are you sure you want to delete this group?',
             actions: [{
-              title: 'Delete'
+              title: 'Yes, Delete'
             }]
           });
 
@@ -28,6 +30,7 @@
             .remove()
             .then(() => {
               this._removeGroupByID(group.id);
+              this._Notification.success(`Group (${group.name}) removed successfully.`);
             });
         });
       };
@@ -61,13 +64,14 @@
     }
 
     load() {
-      this._api.Group
+      this._api.groups
         .get()
         .then((groups) => {
           this.gridConfig.data = groups;
         });
     }
 
+    // remove group from groups list
     _removeGroupByID(id) {
       _.remove(this.gridConfig.data, (group) => {
         return group.id === id;

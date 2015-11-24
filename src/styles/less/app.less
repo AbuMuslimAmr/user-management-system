@@ -51,5 +51,20 @@ body {
 
 .panel.details {
     padding: 20px;
-    background-color: #FFF8E2;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+}
+
+.no-data {
+    padding: 14px;
+    background-color: #fcf8e3;
+    border: 1px solid darken(#fcf8e3, 20);
+}
+
+/* workaround ngTagsInput doesn't listen to the $dirty property */
+tags-input.untouched .tags {
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }

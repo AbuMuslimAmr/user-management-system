@@ -10,7 +10,6 @@ module.exports = function(grunt) {
     clean: loadGruntTask('clean'),
     jshint: loadGruntTask('jshint'),
     copy: loadGruntTask('copy'),
-    lesslint: loadGruntTask('lesslint'),
     less: loadGruntTask('less'),
     watch: loadGruntTask('watch'),
     concat: loadGruntTask('concat'),
@@ -20,7 +19,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-lesslint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -30,7 +28,6 @@ module.exports = function(grunt) {
     'clean',
     'jshint:all',
     'copy',
-    //'lesslint',
     'less',
     'concat',
     'babel',

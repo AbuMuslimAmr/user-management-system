@@ -1,1 +1,14 @@
-<div ui-grid="usersCtrl.gridConfig"></div>
+<div class="view-wrapper">
+  <div class="btn btn-success btn-md add-btn" ui-sref="user-details">
+    <i class="fa fa-plus"></i> User
+  </div>
+  <div 
+    ng-show="!loading && usersCtrl.gridConfig.data.length"
+    ui-grid="usersCtrl.gridConfig">
+  </div>
+  <div
+    ng-show="!loading && !usersCtrl.gridConfig.data.length"
+    class="no-data">
+    No users added yet.
+  </div>
+</div>

@@ -27,28 +27,28 @@
       // Group APIs
       // note that, PUT and DELETE are called on entity
       // after getting restangularized
-      let Group = {
+      let groups = {
         get: (id) => {
           return Resource.get('group', id);
         },
         create: (group) => {
           return Resource.create('group', group);
         },
-        addUser: (group, userID) => {
+        addUser: (groupID, userID) => {
           return Restangular
-            .service(`group/${group.id}/user/${userID}`)
+            .service(`group/${groupID}/user/${userID}`)
             .post({});
         },
-        removeUser: (group, userID) => {
+        removeUser: (groupID, userID) => {
           return Restangular
-            .one('group', group.id)
+            .one('group', groupID)
             .one('user', userID)
             .remove();
         }
       };
 
       // User APIs
-      let User = {
+      let users = {
         get: (id) => {
           return Resource.get('user', id);
         },
@@ -58,8 +58,8 @@
       };
 
       return {
-        Group: Group,
-        User: User
+        groups: groups,
+        users: users
       };
     });
 })();

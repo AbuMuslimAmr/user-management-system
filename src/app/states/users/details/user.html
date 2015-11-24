@@ -1,0 +1,78 @@
+<div class="panel details">
+  <form class="form-horizontal" name="form">
+    <!-- ID -->
+    <div class="form-group" ng-if="userCtrl.mode === userCtrl.ENTITY_MODES.EDIT">
+      <label class="col-sm-2 control-label">ID</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">
+          {{userCtrl.user.id}}
+        </p>
+
+        <span>&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Name -->
+    <div class="form-group" ng-class="{'has-error': form.name.$invalid && form.name.$dirty}">
+      <label class="col-sm-2 control-label">* Name</label>
+      <div class="col-sm-10">
+        <input name="name" type="text" class="form-control" placeholder="User name" ng-model="userCtrl.user.name" required />
+
+        <span ng-show="form.name.$valid || !form.name.$dirty">&nbsp;</span>
+        <span class="text-danger" ng-show="form.name.$error.required && form.name.$dirty">
+          name can't be empty
+        </span>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group" ng-class="{'has-error': form.email.$invalid && form.email.$dirty}">
+      <label class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <input name="email" type="email" class="form-control" placeholder="Email" ng-model="userCtrl.user.email" />
+
+        <span ng-show="form.email.$valid || !form.email.$dirty">&nbsp;</span>
+        <span class="text-danger" ng-show="form.email.$error.email && form.email.$dirty">
+          invalid email
+        </span>
+      </div>
+    </div>
+
+    <!-- Groups -->
+    <div class="form-group">
+      <label class="col-sm-2 control-label">* Groups</label>
+      <div class="col-sm-10">
+        <tags-input 
+          name="groups"
+          ng-model="userCtrl.user.groups"
+          add-from-autocomplete-only="true"
+          replace-spaces-with-dashes="false"
+          display-property="name"
+          key-property="id"
+          placeholder="Start typing to search..."
+          required
+          ng-class="{untouched: !form.groups.$dirty}">
+          <auto-complete
+            source="userCtrl.filterGroups($query)"
+            min-length="1">
+          </auto-complete>
+        </tags-input>
+
+        <span ng-show="form.groups.$valid || !form.groups.$dirty">&nbsp;</span>
+        <span class="text-danger" ng-show="form.groups.$error.required && form.groups.$dirty">
+          User must be assigned to at least one group
+        </span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-group">
+      <div class="col-xs-12 text-right">
+        <a class="btn btn-default" ui-sref="users">Cancel</a>
+        <button class="btn btn-success" type="submit" ng-click="userCtrl.submit()" ng-disabled="form.$invalid">
+          {{userCtrl.mode === userCtrl.ENTITY_MODES.ADD ? 'Add' : 'Save'}}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

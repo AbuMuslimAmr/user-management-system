@@ -61,6 +61,20 @@ var UserGroupTable = function() {
 
     return userIDs;
   };
+
+  // removes all relations with specific group
+  this.removeGroup = function(groupID) {
+    _.remove(this.relations, function(relation) {
+      return relation.groupID === groupID;
+    });
+  };
+
+  // removes all relations with specific user
+  this.removeUser = function(userID) {
+    _.remove(this.relations, function(relation) {
+      return relation.userID === userID;
+    });
+  };
 };
 
 // Singelton pattern

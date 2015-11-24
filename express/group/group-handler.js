@@ -2,7 +2,8 @@ var _ = require('lodash'),
     Group = require('../group/group'),
     EntityCollection = require('../helpers/entity-collection'),
     groups = new EntityCollection(),
-    UserGroupTable = require('../helpers/user-group-table').get();
+    UserGroupTable = require('../helpers/user-group-table').get(),
+    utils = require('../helpers/utils');
 
 //************************************************//
 //  POST Group handler
@@ -38,6 +39,9 @@ function remove(req, res) {
   var groupID = parseInt(req.params.id, 10),
       group = groups.remove(groupID);
 
+  // removes all relations with this group
+  UserGroupTable.removeGroup(groupID);
+  
   res.send(group.get()); // the just deleted group
 }
 
@@ -82,10 +86,16 @@ function removeUserFromGroup(req, res) {
 //************************************************//
 //  Seed sample data
 //************************************************//
+var config = require('../config');
+
 (function seed() {
-  _.times(10, function(i) {
+  if (config.seed.groups > 0) {
+    console.log('Seeding ' + config.seed.groups + ' groups...');
+  }
+
+  _.times(config.seed.groups, function(i) {
     var group = new Group({
-      name: 'group ' + i
+      name: 'GR-' + utils.randomStr()
     });
 
     groups.push(group); 
