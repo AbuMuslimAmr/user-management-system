@@ -9,6 +9,7 @@
       'ui.grid.pinning',
       'ngTouch',
       'ngTagsInput',
-      'restangular'
+      'restangular',
+      'ui-notification'
     ]);
 })();
