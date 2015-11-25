@@ -29,7 +29,7 @@
             .remove()
             .then(() => {
               this._removeUserByID(user.id);
-              this._Notification.success(`Group (${user.name}) removed successfully.`);
+              this._Notification.success(`User (${user.name}) removed successfully.`);
             }, () => {
               this._Notification.error('Something went wrong while removing the user!');
             });
